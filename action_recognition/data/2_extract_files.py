@@ -26,7 +26,7 @@ def extract_images():
                 # extract images from videos
                 if not os.path.exists(os.path.join(group, classname, filename_no_ext + '-0001.jpg')):
                     dst = os.path.join(group, classname, filename_no_ext + '-%04d.jpg')
-                    call(['ffmpeg', '-i', video, dst])
+                    call(['ffmpeg', '-i', video, '-r', '10', dst])
 
                 n_frames = len(glob.glob(os.path.join(group, classname, filename_no_ext + '*.jpg')))
                 rows.append([group, classname, filename_no_ext, n_frames])
